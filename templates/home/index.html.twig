@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil | Troupeau{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
     <main class="page-shell">
         <header class="hero">
-            <p class="eyebrow">Symfony 8 + Twig + AssetMapper</p>
-            <h1>Troupeau</h1>
+            <div class="hero-brand">
+                <img src="{{ asset(logo_asset) }}" alt="{{ title }}" class="hero-logo">
+                <h1>{{ title }}</h1>
+            </div>
             <p class="lead">
-                Petit socle prêt à évoluer, avec lecture CSV et styles en Sass.
+                {{ subtitle }}
             </p>
         </header>
 

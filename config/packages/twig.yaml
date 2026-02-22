@@ -1,5 +1,9 @@
 twig:
     file_name_pattern: '*.twig'
+    globals:
+        title: '%app.ui.title%'
+        subtitle: '%app.ui.subtitle%'
+        logo_asset: '%app.ui.logo%'
 
 when@test:
     twig:

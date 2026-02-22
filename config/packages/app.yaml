@@ -1,0 +1,4 @@
+parameters:
+    app.ui.title: 'Les Roves Nomades'
+    app.ui.subtitle: 'Gestion du troupeau'
+    app.ui.logo: 'images/logo.svg'
