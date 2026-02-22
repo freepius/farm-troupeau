@@ -1,0 +1,31 @@
+<li class="family-tree__node level-{{ level }}">
+    <div class="family-tree__row{% if not node.is_alive %} is-dead{% endif %}">
+        <div class="family-tree__main">
+            <span class="family-tree__name">{{ node.name }}</span>
+            <span class="family-tree__meta">
+                {{ node.year }}
+                {% if node.marquage or node.boucle %}
+                    · {{ node.marquage }}/{{ node.boucle }}
+                {% endif %}
+            </span>
+        </div>
+        <div class="family-tree__status">
+            {% if node.is_alive %}
+                <span class="status status-alive">Vivant</span>
+            {% else %}
+                <span class="status status-dead">Décédé</span>
+                {% if node.death_date %}
+                    <span class="subtle">{{ node.death_date }}</span>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% if node.children is not empty %}
+        <ul class="family-tree family-tree--children">
+            {% for child in node.children %}
+                {% include 'family/_tree_node.html.twig' with { node: child, level: level + 1 } only %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

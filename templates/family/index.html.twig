@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Familles | {{ title }}{% endblock %}
+
+{% block body %}
+    <main class="page-shell family-page">
+        <header class="hero">
+            <a href="{{ path('app_home') }}" class="hero-brand" aria-label="Retour au tableau">
+                <img src="{{ asset(logo_asset) }}" alt="{{ title }}" class="hero-logo">
+                <h1>{{ title }}</h1>
+            </a>
+            <p class="lead">Vue familles par thème (arbre des descendances maternelles)</p>
+            <nav class="view-nav" aria-label="Vues">
+                <a href="{{ path('app_home') }}" class="view-nav__link">Tableau</a>
+                <a href="{{ path('app_families') }}" class="view-nav__link is-active">Familles</a>
+            </nav>
+        </header>
+
+        <section class="panel family-accordion-panel">
+            <div class="panel-head">
+                <h2>Familles</h2>
+                <div class="panel-meta">
+                    <code>{{ csv_path }}</code>
+                    <span class="pill">{{ family_view.counts.animals }} animaux</span>
+                    <span class="pill pill-soft">{{ family_view.counts.themes }} thèmes</span>
+                </div>
+            </div>
+
+            <div class="family-toolbar">
+                <form method="get" class="family-toolbar__search">
+                    <label>
+                        <span>Recherche</span>
+                        <input
+                            type="search"
+                            name="q"
+                            value="{{ filters.q|default('') }}"
+                            placeholder="Nom, année, marquage, boucle..."
+                        >
+                    </label>
+                    <div class="filters-actions">
+                        <button type="submit">Rechercher</button>
+                        <a href="{{ path('app_families') }}">Réinitialiser</a>
+                    </div>
+                </form>
+
+                <div class="family-toolbar__actions" data-family-accordion-controls>
+                    <button type="button" data-action="open">Ouvrir tous</button>
+                    <button type="button" data-action="close">Fermer tous</button>
+                </div>
+            </div>
+
+            {% if family_view.themes is empty %}
+                <p class="empty">Aucune famille à afficher.</p>
+            {% else %}
+                <div class="theme-accordions">
+                    {% for theme in family_view.themes %}
+                        <details class="theme-accordion" data-theme-accordion>
+                            <summary class="theme-accordion__summary">
+                                <span class="theme-accordion__title">{{ theme.name }}</span>
+                                <span class="theme-accordion__counts">
+                                    <strong>{{ theme.alive_count + theme.dead_count }}</strong>
+                                    <span class="theme-accordion__sep">·</span>
+                                    <strong class="stats-value--primary">{{ theme.alive_count }}</strong>
+                                    <small class="stats-value--secondary">({{ theme.dead_count }})</small>
+                                </span>
+                            </summary>
+
+                            <div class="theme-accordion__content">
+                                {% if theme.roots is empty %}
+                                    <p class="empty">Aucun individu dans ce thème.</p>
+                                {% else %}
+                                    <ul class="family-tree">
+                                        {% for node in theme.roots %}
+                                            {% include 'family/_tree_node.html.twig' with { node: node, level: 0 } only %}
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </details>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}

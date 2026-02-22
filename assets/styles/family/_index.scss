@@ -1,0 +1,232 @@
+.view-nav {
+  margin-top: 0.9rem;
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.view-nav__link {
+  border: 1px solid #d9cfbe;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  text-decoration: none;
+  color: #182016;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.view-nav__link.is-active {
+  background: rgba(230, 241, 217, 0.9);
+  border-color: #b8d0ac;
+  color: #245a33;
+  font-weight: 700;
+}
+
+.family-page .panel {
+  overflow: hidden;
+}
+
+.family-accordion-panel {
+  padding-bottom: 0.75rem;
+}
+
+.family-toolbar {
+  display: grid;
+  gap: 0.8rem;
+  padding: 0.9rem 0.9rem 0;
+}
+
+.family-toolbar__search {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.family-toolbar__search label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: #5f685b;
+  font-size: 0.82rem;
+}
+
+.family-toolbar__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.family-toolbar__actions button {
+  border: 1px solid #d9cfbe;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.65);
+  color: #182016;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+}
+
+.theme-accordions {
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.theme-accordion {
+  border: 1px solid rgba(217, 207, 190, 0.9);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.52);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.theme-accordion__summary {
+  cursor: pointer;
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 0.95rem;
+  background: rgba(24, 32, 22, 0.02);
+}
+
+.theme-accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.theme-accordion__title {
+  min-width: 0;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.theme-accordion__counts {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.theme-accordion__sep {
+  color: #5f685b;
+}
+
+.theme-accordion__content {
+  padding: 0.75rem 0.85rem 0.9rem;
+  border-top: 1px solid rgba(217, 207, 190, 0.8);
+}
+
+.family-tree {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.family-tree--children {
+  margin-top: 0.35rem;
+  margin-left: 1.1rem;
+  padding-left: 0.7rem;
+  border-left: 2px solid rgba(47, 107, 63, 0.25);
+}
+
+.family-tree__node {
+  min-width: 0;
+  position: relative;
+}
+
+.family-tree--children > .family-tree__node::before {
+  content: '';
+  position: absolute;
+  left: -0.72rem;
+  top: 1.55rem;
+  width: 0.65rem;
+  border-top: 2px solid rgba(47, 107, 63, 0.25);
+}
+
+.family-tree__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(217, 207, 190, 0.65);
+  background: rgba(255, 252, 247, 0.7);
+}
+
+.family-tree__row::before {
+  content: '';
+  position: absolute;
+  left: -0.2rem;
+  top: 50%;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: #2f6b3f;
+  transform: translateY(-50%);
+  opacity: 0.35;
+}
+
+.family-tree__row.is-dead {
+  background: rgba(121, 45, 45, 0.03);
+}
+
+.family-tree__main {
+  min-width: 0;
+}
+
+.family-tree__name {
+  display: block;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.family-tree__meta {
+  display: block;
+  margin-top: 0.1rem;
+  color: #5f685b;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.family-tree__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+@media (max-width: 700px) {
+  .theme-accordion__summary,
+  .family-tree__row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .theme-accordion__counts,
+  .family-tree__status {
+    justify-self: start;
+  }
+
+  .family-tree--children {
+    margin-left: 0.5rem;
+    padding-left: 0.55rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .theme-accordions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1400px) {
+  .theme-accordions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
