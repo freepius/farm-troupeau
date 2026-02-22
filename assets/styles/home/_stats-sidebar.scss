@@ -68,6 +68,27 @@
   white-space: nowrap;
 }
 
+.stats-filter-link {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 0.3rem;
+}
+
+.stats-filter-link:hover,
+.stats-filter-link:focus-visible {
+  color: #2f6b3f;
+  text-decoration: underline;
+}
+
+.stats-filter-link.is-active {
+  color: #245a33;
+  font-weight: 700;
+}
+
 .stats-list li strong {
   font-size: 0.85rem;
 }

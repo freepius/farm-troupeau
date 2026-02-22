@@ -5,7 +5,7 @@
 {% block body %}
     <main class="page-shell">
         <div class="home-layout">
-            {% include 'home/_stats_sidebar.html.twig' with { sidebar_stats: sidebar_stats } only %}
+            {% include 'home/_stats_sidebar.html.twig' with { sidebar_stats: sidebar_stats, filters: filters } only %}
 
             <div class="home-main">
                 <header class="hero">

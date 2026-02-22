@@ -6,9 +6,20 @@
         <section class="stats-group" aria-labelledby="stats-status-title">
             <h3 id="stats-status-title">Par statut</h3>
             <ul class="stats-list">
+                <li>
+                    <a
+                        href="{{ path('app_home', filters|merge({statut: 'tous'})) }}"
+                        class="stats-filter-link{% if filters.statut == 'tous' %} is-active{% endif %}"
+                    >Tous</a>
+                    <strong>{{ sidebar_stats.total }}</strong>
+                </li>
                 {% for item in sidebar_stats.by_status %}
+                    {% set status_value = item.label == 'Vivants' ? 'vivants' : 'decedes' %}
                     <li>
-                        <span>{{ item.label }}</span>
+                        <a
+                            href="{{ path('app_home', filters|merge({statut: status_value})) }}"
+                            class="stats-filter-link{% if filters.statut == status_value %} is-active{% endif %}"
+                        >{{ item.label }}</a>
                         <strong class="{% if item.label == 'Vivants' %}stats-value--primary{% endif %}">{{ item.count }}</strong>
                     </li>
                 {% endfor %}
@@ -18,9 +29,24 @@
         <section class="stats-group" aria-labelledby="stats-years-title">
             <h3 id="stats-years-title">Par annee</h3>
             <ul class="stats-list">
+                <li>
+                    <a
+                        href="{{ path('app_home', filters|merge({annee: ''})) }}"
+                        class="stats-filter-link{% if filters.annee == '' %} is-active{% endif %}"
+                    >Toutes</a>
+                    <span class="stats-values">
+                        <strong class="stats-value--primary">{{ sidebar_stats.by_status[0].count }}</strong>
+                        {% if sidebar_stats.by_status[1].count > 0 %}
+                            <small class="stats-value--secondary">({{ sidebar_stats.by_status[1].count }})</small>
+                        {% endif %}
+                    </span>
+                </li>
                 {% for item in sidebar_stats.by_year %}
                     <li>
-                        <span>{{ item.label }}</span>
+                        <a
+                            href="{{ path('app_home', filters|merge({annee: item.label})) }}"
+                            class="stats-filter-link{% if filters.annee == item.label %} is-active{% endif %}"
+                        >{{ item.label }}</a>
                         <span class="stats-values">
                             <strong class="stats-value--primary">{{ item.alive_count }}</strong>
                             {% if item.dead_count > 0 %}
@@ -35,9 +61,24 @@
         <section class="stats-group" aria-labelledby="stats-themes-title">
             <h3 id="stats-themes-title">Par theme</h3>
             <ul class="stats-list stats-list--scroll">
+                <li>
+                    <a
+                        href="{{ path('app_home', filters|merge({theme: ''})) }}"
+                        class="stats-filter-link{% if filters.theme == '' %} is-active{% endif %}"
+                    >Tous</a>
+                    <span class="stats-values">
+                        <strong class="stats-value--primary">{{ sidebar_stats.by_status[0].count }}</strong>
+                        {% if sidebar_stats.by_status[1].count > 0 %}
+                            <small class="stats-value--secondary">({{ sidebar_stats.by_status[1].count }})</small>
+                        {% endif %}
+                    </span>
+                </li>
                 {% for item in sidebar_stats.by_theme %}
                     <li>
-                        <span>{{ item.label }}</span>
+                        <a
+                            href="{{ path('app_home', filters|merge({theme: item.label})) }}"
+                            class="stats-filter-link{% if filters.theme == item.label %} is-active{% endif %}"
+                        >{{ item.label }}</a>
                         <span class="stats-values">
                             <strong class="stats-value--primary">{{ item.alive_count }}</strong>
                             {% if item.dead_count > 0 %}
