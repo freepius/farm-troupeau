@@ -1,0 +1,42 @@
+<aside class="stats-sidebar" aria-labelledby="stats-sidebar-title">
+    <div class="stats-sidebar__inner">
+        <h2 id="stats-sidebar-title">Stats</h2>
+        <p class="stats-sidebar__total">{{ sidebar_stats.total }} animaux (CSV complet)</p>
+
+        <section class="stats-group" aria-labelledby="stats-years-title">
+            <h3 id="stats-years-title">Par annee</h3>
+            <ul class="stats-list">
+                {% for item in sidebar_stats.by_year %}
+                    <li>
+                        <span>{{ item.label }}</span>
+                        <strong>{{ item.count }}</strong>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="stats-group" aria-labelledby="stats-status-title">
+            <h3 id="stats-status-title">Par statut</h3>
+            <ul class="stats-list">
+                {% for item in sidebar_stats.by_status %}
+                    <li>
+                        <span>{{ item.label }}</span>
+                        <strong>{{ item.count }}</strong>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="stats-group" aria-labelledby="stats-themes-title">
+            <h3 id="stats-themes-title">Par theme</h3>
+            <ul class="stats-list stats-list--scroll">
+                {% for item in sidebar_stats.by_theme %}
+                    <li>
+                        <span>{{ item.label }}</span>
+                        <strong>{{ item.count }}</strong>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</aside>

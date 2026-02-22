@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\AnimalStatsBuilder;
 use App\Service\CsvReader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,11 +12,12 @@ use Symfony\Component\Routing\Attribute\Route;
 final class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(Request $request, CsvReader $csvReader): Response
+    public function index(Request $request, CsvReader $csvReader, AnimalStatsBuilder $animalStatsBuilder): Response
     {
         $csvPath = 'data/animaux.csv';
         $rows = $csvReader->readAssociative($csvPath);
         $columns = $rows !== [] ? array_keys($rows[0]) : [];
+        $sidebarStats = $animalStatsBuilder->build($rows);
 
         $filters = [
             'q' => trim((string) $request->query->get('q', '')),
@@ -68,6 +70,7 @@ final class HomeController extends AbstractController
             'year_options' => $yearOptions,
             'theme_options' => $themeOptions,
             'stats' => $stats,
+            'sidebar_stats' => $sidebarStats,
         ]);
     }
 

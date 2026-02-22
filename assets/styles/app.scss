@@ -1,3 +1,5 @@
+@use 'home/stats-sidebar';
+
 $bg: #f4efe6;
 $ink: #182016;
 $muted: #5f685b;
@@ -32,7 +34,7 @@ code {
 }
 
 .page-shell {
-  width: min(980px, calc(100% - 2rem));
+  width: min(1280px, calc(100% - 2rem));
   margin: 2.5rem auto 4rem;
 }
 
