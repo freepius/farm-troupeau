@@ -17,3 +17,7 @@
 ###> symfonycasts/sass-bundle ###
 /public/assets/
 ###< symfonycasts/sass-bundle ###
+
+# Local spreadsheet work files
+data/.~lock.*
+data/*.ods
