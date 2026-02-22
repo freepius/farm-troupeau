@@ -1,0 +1,266 @@
+$bg: #f4efe6;
+$ink: #182016;
+$muted: #5f685b;
+$line: #d9cfbe;
+$card: rgba(255, 252, 247, 0.82);
+$accent: #2f6b3f;
+$accent-soft: #e6f1d9;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: $ink;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(229, 241, 217, 0.95), transparent 45%),
+    radial-gradient(circle at 90% 15%, rgba(255, 227, 192, 0.55), transparent 35%),
+    $bg;
+}
+
+code {
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.45rem;
+  background: rgba(24, 32, 22, 0.06);
+  font-size: 0.9em;
+}
+
+.page-shell {
+  width: min(980px, calc(100% - 2rem));
+  margin: 2.5rem auto 4rem;
+}
+
+.hero {
+  margin-bottom: 1.25rem;
+
+  h1 {
+    margin: 0.1rem 0 0;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  color: $accent;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+.lead {
+  margin: 0.8rem 0 0;
+  color: $muted;
+  max-width: 60ch;
+}
+
+.panel {
+  border: 1px solid $line;
+  border-radius: 1rem;
+  background: $card;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 30px rgba(24, 32, 22, 0.06);
+  overflow: hidden;
+}
+
+.panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.75rem;
+  border-bottom: 1px solid $line;
+
+  h2 {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+.panel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid $line;
+  background: rgba(24, 32, 22, 0.04);
+  font-size: 0.78rem;
+}
+
+.pill-soft {
+  background: rgba(230, 241, 217, 0.8);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.8rem;
+  padding: 1rem;
+  border-bottom: 1px solid $line;
+  background: rgba(24, 32, 22, 0.02);
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    color: $muted;
+  }
+
+  label:first-child {
+    grid-column: span 12;
+  }
+
+  label:not(:first-child) {
+    grid-column: span 6;
+  }
+
+  @media (min-width: 900px) {
+    label:first-child {
+      grid-column: span 4;
+    }
+
+    label:nth-child(2),
+    label:nth-child(3),
+    label:nth-child(4),
+    label:nth-child(5) {
+      grid-column: span 2;
+    }
+  }
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input[type="search"],
+select {
+  width: 100%;
+  border: 1px solid $line;
+  border-radius: 0.7rem;
+  padding: 0.6rem 0.75rem;
+  background: #fffdfa;
+  color: $ink;
+}
+
+input[type="search"]:focus,
+select:focus {
+  outline: 2px solid rgba(47, 107, 63, 0.25);
+  outline-offset: 1px;
+  border-color: $accent;
+}
+
+.filters-actions {
+  grid-column: span 12;
+  display: flex;
+  gap: 0.65rem;
+  align-items: end;
+
+  button,
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.45rem;
+    border-radius: 0.7rem;
+    padding: 0 0.85rem;
+    text-decoration: none;
+  }
+
+  button {
+    border: 1px solid darken($accent, 8%);
+    background: $accent;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  a {
+    border: 1px solid $line;
+    color: $ink;
+    background: rgba(255, 255, 255, 0.65);
+  }
+}
+
+.empty {
+  margin: 0;
+  padding: 1rem;
+  color: $muted;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-align: left;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $muted;
+  background: rgba(24, 32, 22, 0.03);
+}
+
+th,
+td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid $line;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background: $accent-soft;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.status-alive {
+  background: rgba(47, 107, 63, 0.14);
+  color: #245a33;
+}
+
+.status-dead {
+  background: rgba(121, 45, 45, 0.12);
+  color: #7b2f2f;
+}
+
+.subtle {
+  margin-left: 0.45rem;
+  color: $muted;
+  font-size: 0.88rem;
+}

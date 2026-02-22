@@ -1,0 +1,68 @@
+Année;N° marquage;N° boucle;Nom;Thème;Nom de la mère;Mort
+2019;139093;10001;Coco;Câlin;;
+2019;139093;10002;Tima;;;04/05/2022
+2020;241018;01081;Haricot;Légumineuse;;
+2020;241018;01082;Trompette;Instrument de musique;;
+2020;241018;01083;Astrid;Astrid Lindgren;;24/03/2021
+2020;241018;01084;Pixel;Informatique;;13/02/2024
+2020;241018;01085;Naseweis;Surnoms d’enfants;;
+2020;241018;01086;Syrah;Vin;;23/03/2022
+2020;241018;01087;Maya;Peuples;;
+2020;241018;01088;Bretzel;Alsace;;28/07/2025
+2020;241018;01089;Debian (Mignonne);Distributions GNU / Linux;;
+2020;241018;01090;Litchi;Fruits;;
+2020;241018;01091;Zézètte;Noms en ette;;23/07/2025
+2020;241018;01092;Galaxy;Espace;;
+2020;241018;01093;Madeleine;Col de tour de france;;
+2020;241018;01094;Lavande;Plantes aromatiques;;28/01/2024
+2020;241018;01095;Amiga;Amitié;;
+2020;241676;01001;Llardana;Montagne;;
+2020;241676;01002;Australie;Australie;;
+2020;241676;01003;Pettirossi;Oiseaux;;11/07/2024
+2020;241676;01004;Écorce;Forêt;;
+2020;241676;01005;Garrigue;Paysage;;
+2020;241676;01006;Nzinga;Femmes avec un destin extraordinaire;;
+2020;242088;00015;Vanille;;;08/11/2022
+2020;242088;00016;Chocolat;Gourmandise;;
+2021;139093;10003;Mathilde;Ancien patron;Tima;11/10/2025
+2021;139093;10005;Greta;Femmes avec un destin extraordinaire;Nzinga;
+2021;139093;10006;Signal de botrange;Montagne;Llardana;
+2021;139093;10007;M’Goun;Montagne;Llardana;
+2021;139093;10008;Lentille;Légumineuse;Haricot;
+2021;139093;10009;Aravis;Col de tour de france;Madeleine;
+2021;139093;10010;Orion;Espace;Galaxy;
+2021;139093;10011;Feuille;Forêt;Écorce;13/09/2024
+2022;139093;10012;Knuffie;Câlin;Coco;
+2022;139093;10013;Vriendinnetje;Amitié;Amiga;05/09/2024
+2022;139093;10014;Flûte;Instrument de musique;Trompette;14/12/2024
+2022;139093;10015;Berber;Peuples;Maya;
+2022;139093;10016;Louisette;Noms en ette;Zézètte;
+2022;139093;10017;Henriette;Noms en ette;Zézètte;28/01/2024
+2022;139093;10018;Mezenc;Montagne;Llardana;
+2022;139093;10019;Steppe;Paysage;Garrigue;
+2022;139093;10020;Malala;Femmes avec un destin extraordinaire;Nzinga;
+2022;139093;10021;Bernard;Ancien patron;Mathilde;
+2022;139093;10022;Feverolle;Légumineuse;Haricot;
+2022;139093;10023;Serpolet;Plantes aromatiques;Lavande;
+2022;139093;10024;Sariette;Plantes aromatiques;Lavande;
+2022;139093;10025;Boomerang;Australie;Australie;
+2022;139093;10026;Muscadet;Vin;Syrah;
+2022;139093;10027;Iseran;Col de tour de france;Aravis;
+2022;139093;10031;Caramel;Gourmandise;Chocolat;
+2023;139093;10034;Masai;Peuples;Maya;
+2024;139093;10035;Mandoline;Instrument de musique;Trompette;
+2024;242431;60006;Réglisse;Gourmandise;Chocolat;
+2024;242431;60007;Bozo;Peuples;Maya;
+2024;242431;60008;Anne Bonnie;Femmes avec un destin extraordinaire;Nzinga;
+2024;242431;60009;Adelaïde;Australie;Australie;
+2024;242431;60010;Zarga;Montagne;Llardana;
+2025;242431;60011;Simone (Veil);Femmes avec un destin extraordinaire;Malala;
+2025;242431;60012;Clairette;Vin;Muscadet;
+2025;242431;60013;Camomille;Plantes aromatiques;Serpolet;
+2025;242431;60014;Saxo;Instrument de musique;Trompette;
+2025;242431;60015;Ubuntu;Distributions GNU / Linux;Debian;
+2025;242431;60016;Uluru;Montagne;Llardana;
+2025;242431;60017;Galibier;Col de tour de france;Madeleine;
+2025;242431;60018;Sarenne;Col de tour de france;Aravis;
+2025;242431;60019;Annapurna;Montagne;Mezenc;
+2025;242431;60020;Pois chiche;Légumineuse;Lentille;

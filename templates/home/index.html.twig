@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil | Troupeau{% endblock %}
+
+{% block body %}
+    <main class="page-shell">
+        <header class="hero">
+            <p class="eyebrow">Symfony 8 + Twig + AssetMapper</p>
+            <h1>Troupeau</h1>
+            <p class="lead">
+                Petit socle prêt à évoluer, avec lecture CSV et styles en Sass.
+            </p>
+        </header>
+
+        <section class="panel">
+            <div class="panel-head">
+                <h2>Données CSV</h2>
+                <div class="panel-meta">
+                    <code>{{ csv_path }}</code>
+                    <span class="pill">{{ stats.filtered }} / {{ stats.total }}</span>
+                    <span class="pill pill-soft">vivants: {{ stats.alive }}</span>
+                    <span class="pill pill-soft">décédés: {{ stats.dead }}</span>
+                </div>
+            </div>
+
+            <form method="get" class="filters">
+                <label>
+                    <span>Recherche</span>
+                    <input
+                        type="search"
+                        name="q"
+                        value="{{ filters.q }}"
+                        placeholder="Nom, thème, mère, marquage, boucle..."
+                    >
+                </label>
+
+                <label>
+                    <span>Année</span>
+                    <select name="annee">
+                        <option value="">Toutes</option>
+                        {% for year in year_options %}
+                            <option value="{{ year }}" {% if filters.annee == year %}selected{% endif %}>{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+
+                <label>
+                    <span>Thème</span>
+                    <select name="theme">
+                        <option value="">Tous</option>
+                        {% for theme in theme_options %}
+                            <option value="{{ theme }}" {% if filters.theme == theme %}selected{% endif %}>{{ theme }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+
+                <label>
+                    <span>Statut</span>
+                    <select name="statut">
+                        <option value="tous" {% if filters.statut == 'tous' %}selected{% endif %}>Tous</option>
+                        <option value="vivants" {% if filters.statut == 'vivants' %}selected{% endif %}>Vivants</option>
+                        <option value="decedes" {% if filters.statut == 'decedes' %}selected{% endif %}>Décédés</option>
+                    </select>
+                </label>
+
+                <label>
+                    <span>Tri</span>
+                    <select name="tri">
+                        <option value="annee_desc_nom_asc" {% if filters.tri == 'annee_desc_nom_asc' %}selected{% endif %}>Année décroissante + nom</option>
+                        <option value="annee_asc_nom_asc" {% if filters.tri == 'annee_asc_nom_asc' %}selected{% endif %}>Année croissante + nom</option>
+                        <option value="nom_asc" {% if filters.tri == 'nom_asc' %}selected{% endif %}>Nom A → Z</option>
+                        <option value="nom_desc" {% if filters.tri == 'nom_desc' %}selected{% endif %}>Nom Z → A</option>
+                        <option value="boucle_asc" {% if filters.tri == 'boucle_asc' %}selected{% endif %}>N° boucle</option>
+                        <option value="marquage_boucle_asc" {% if filters.tri == 'marquage_boucle_asc' %}selected{% endif %}>Clé (marquage + boucle)</option>
+                        <option value="mort_recent" {% if filters.tri == 'mort_recent' %}selected{% endif %}>Décès récents d'abord</option>
+                    </select>
+                </label>
+
+                <div class="filters-actions">
+                    <button type="submit">Appliquer</button>
+                    <a href="{{ path('app_home') }}">Réinitialiser</a>
+                </div>
+            </form>
+
+            {% if rows is empty %}
+                <p class="empty">
+                    Aucun résultat pour ces filtres.
+                </p>
+            {% else %}
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                {% for column in columns %}
+                                    <th>{{ column }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in rows %}
+                                <tr>
+                                    {% for column in columns %}
+                                        {% set value = attribute(row, column) %}
+                                        {% if column == 'Mort' %}
+                                            <td>
+                                                {% if value %}
+                                                    <span class="status status-dead">Décédé</span>
+                                                    <span class="subtle">{{ value }}</span>
+                                                {% else %}
+                                                    <span class="status status-alive">Vivant</span>
+                                                {% endif %}
+                                            </td>
+                                        {% elseif column == 'Nom de la mère' %}
+                                            <td>{{ value ?: '—' }}</td>
+                                        {% else %}
+                                            <td>{{ value }}</td>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}
