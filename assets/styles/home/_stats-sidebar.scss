@@ -72,6 +72,22 @@
   font-size: 0.85rem;
 }
 
+.stats-values {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.stats-value--primary {
+  color: #245a33;
+  font-weight: 700;
+}
+
+.stats-value--secondary {
+  color: #5f685b;
+  font-size: 0.75rem;
+}
+
 .stats-list--scroll {
   max-height: 18rem;
   overflow: auto;
