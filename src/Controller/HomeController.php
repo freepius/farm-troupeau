@@ -21,8 +21,8 @@ final class HomeController extends AbstractController
             'q' => trim((string) $request->query->get('q', '')),
             'annee' => trim((string) $request->query->get('annee', '')),
             'theme' => trim((string) $request->query->get('theme', '')),
-            'statut' => (string) $request->query->get('statut', 'tous'),
-            'tri' => (string) $request->query->get('tri', 'annee_desc_nom_asc'),
+            'statut' => (string) $request->query->get('statut', 'vivants'),
+            'tri' => (string) $request->query->get('tri', 'annee_asc_nom_asc'),
         ];
 
         if (!in_array($filters['statut'], ['tous', 'vivants', 'decedes'], true)) {
@@ -40,7 +40,7 @@ final class HomeController extends AbstractController
         ];
 
         if (!in_array($filters['tri'], $allowedSorts, true)) {
-            $filters['tri'] = 'annee_desc_nom_asc';
+            $filters['tri'] = 'annee_asc_nom_asc';
         }
 
         $yearOptions = $this->uniqueSortedValues($rows, 'Année');

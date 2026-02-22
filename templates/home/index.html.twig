@@ -5,10 +5,10 @@
 {% block body %}
     <main class="page-shell">
         <header class="hero">
-            <div class="hero-brand">
+            <a href="{{ path('app_home') }}" class="hero-brand" aria-label="Retour a l'accueil">
                 <img src="{{ asset(logo_asset) }}" alt="{{ title }}" class="hero-logo">
                 <h1>{{ title }}</h1>
-            </div>
+            </a>
             <p class="lead">
                 {{ subtitle }}
             </p>
