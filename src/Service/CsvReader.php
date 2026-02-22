@@ -23,7 +23,7 @@ final class CsvReader
             return [];
         }
 
-        $reader = Reader::createFromPath($path, 'r');
+        $reader = Reader::from($path, 'r');
         $reader->setDelimiter($this->detectDelimiter($path));
         $reader->setHeaderOffset(0);
 
