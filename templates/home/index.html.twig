@@ -92,7 +92,7 @@
                         </div>
                     </form>
 
-                    {% if rows is empty %}
+                    {% if animals is empty %}
                         <p class="empty">
                             Aucun résultat pour ces filtres.
                         </p>
@@ -101,31 +101,34 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        {% for column in columns %}
-                                            <th>{{ column }}</th>
-                                        {% endfor %}
+                                        <th>Année</th>
+                                        <th>N° marquage</th>
+                                        <th>N° boucle</th>
+                                        <th>Nom</th>
+                                        <th>Thème</th>
+                                        <th>Nom de la mère</th>
+                                        <th>Mort</th>
+                                        <th>Caractéristiques</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for row in rows %}
+                                    {% for animal in animals %}
                                         <tr>
-                                            {% for column in columns %}
-                                                {% set value = attribute(row, column) %}
-                                                {% if column == 'Mort' %}
-                                                    <td>
-                                                        {% if value %}
-                                                            <span class="status status-dead">Décédé</span>
-                                                            <span class="subtle">{{ value }}</span>
-                                                        {% else %}
-                                                            <span class="status status-alive">Vivant</span>
-                                                        {% endif %}
-                                                    </td>
-                                                {% elseif column == 'Nom de la mère' %}
-                                                    <td>{{ value ?: '—' }}</td>
+                                            <td>{{ animal.yearLabel }}</td>
+                                            <td>{{ animal.marquage }}</td>
+                                            <td>{{ animal.boucle }}</td>
+                                            <td>{{ animal.displayName }}</td>
+                                            <td>{{ animal.themeLabel }}</td>
+                                            <td>{{ animal.motherNameLabel ?: '—' }}</td>
+                                            <td>
+                                                {% if animal.deathDateLabel %}
+                                                    <span class="status status-dead">Décédé</span>
+                                                    <span class="subtle">{{ animal.deathDateLabel }}</span>
                                                 {% else %}
-                                                    <td>{{ value }}</td>
+                                                    <span class="status status-alive">Vivant</span>
                                                 {% endif %}
-                                            {% endfor %}
+                                            </td>
+                                            <td>{{ animal.characteristicsLabel }}</td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>

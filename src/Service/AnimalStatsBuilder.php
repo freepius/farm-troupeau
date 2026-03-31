@@ -2,10 +2,12 @@
 
 namespace App\Service;
 
+use App\Dto\AnimalRecord;
+
 final class AnimalStatsBuilder
 {
     /**
-     * @param list<array<string, string|null>> $rows
+     * @param list<AnimalRecord> $animals
      * @return array{
      *   total:int,
      *   by_year:list<array{label:string,alive_count:int,dead_count:int}>,
@@ -13,17 +15,17 @@ final class AnimalStatsBuilder
      *   by_theme:list<array{label:string,alive_count:int,dead_count:int}>
      * }
      */
-    public function build(array $rows): array
+    public function build(array $animals): array
     {
         $byYear = [];
         $byTheme = [];
         $alive = 0;
         $dead = 0;
 
-        foreach ($rows as $row) {
-            $year = trim((string) ($row['Année'] ?? ''));
-            $theme = trim((string) ($row['Thème'] ?? ''));
-            $isAlive = trim((string) ($row['Mort'] ?? '')) === '';
+        foreach ($animals as $animal) {
+            $year = $animal->getYearLabel();
+            $theme = $animal->getThemeLabel();
+            $isAlive = $animal->isAlive();
 
             if ($year !== '') {
                 $byYear[$year] ??= ['alive_count' => 0, 'dead_count' => 0];
@@ -53,7 +55,7 @@ final class AnimalStatsBuilder
         });
 
         return [
-            'total' => count($rows),
+            'total' => count($animals),
             'by_status' => [
                 ['label' => 'Vivants', 'count' => $alive],
                 ['label' => 'Décédés', 'count' => $dead],

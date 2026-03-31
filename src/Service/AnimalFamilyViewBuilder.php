@@ -2,10 +2,12 @@
 
 namespace App\Service;
 
+use App\Dto\AnimalRecord;
+
 final class AnimalFamilyViewBuilder
 {
     /**
-     * @param list<array<string, string|null>> $rows
+     * @param list<AnimalRecord> $animals
      * @param array{q:string} $filters
      * @return array{
      *   themes:list<array{
@@ -26,17 +28,14 @@ final class AnimalFamilyViewBuilder
      *   counts:array{themes:int,animals:int}
      * }
      */
-    public function build(array $rows, array $filters = ['q' => '']): array
+    public function build(array $animals, array $filters = ['q' => '']): array
     {
         $themeBuckets = [];
         $query = trim((string) ($filters['q'] ?? ''));
 
-        foreach ($rows as $row) {
-            $theme = trim((string) ($row['Thème'] ?? ''));
-            $theme = $theme !== '' ? $theme : 'Sans thème';
-
-            $animal = $this->normalizeAnimal($row);
-            $themeBuckets[$theme][] = $animal;
+        foreach ($animals as $animal) {
+            $theme = $animal->getFamilyThemeLabel();
+            $themeBuckets[$theme][] = $this->normalizeAnimal($animal);
         }
 
         $themeNames = array_keys($themeBuckets);
@@ -180,7 +179,6 @@ final class AnimalFamilyViewBuilder
     }
 
     /**
-     * @param array<string, string|null> $row
      * @return array{
      *   key:string,
      *   name:string,
@@ -192,23 +190,23 @@ final class AnimalFamilyViewBuilder
      *   death_date:?string
      * }
      */
-    private function normalizeAnimal(array $row): array
+    private function normalizeAnimal(AnimalRecord $animal): array
     {
-        $marquage = trim((string) ($row['N° marquage'] ?? ''));
-        $boucle = trim((string) ($row['N° boucle'] ?? ''));
-        $name = trim((string) ($row['Nom'] ?? ''));
-        $motherName = trim((string) ($row['Nom de la mère'] ?? ''));
-        $deathDate = trim((string) ($row['Mort'] ?? ''));
+        $marquage = $animal->marquage;
+        $boucle = $animal->boucle;
+        $name = $animal->getDisplayName();
+        $motherName = $animal->getMotherNameLabel();
+        $deathDate = $animal->getDeathDateLabel();
 
         return [
             'key' => $this->animalKey($marquage, $boucle, $name),
-            'name' => $name !== '' ? $name : 'Sans nom',
+            'name' => $name,
             'mother_name' => $motherName,
-            'year' => trim((string) ($row['Année'] ?? '')),
+            'year' => $animal->getYearLabel(),
             'marquage' => $marquage,
             'boucle' => $boucle,
-            'is_alive' => $deathDate === '',
-            'death_date' => $deathDate !== '' ? $deathDate : null,
+            'is_alive' => $animal->isAlive(),
+            'death_date' => $deathDate,
         ];
     }
 
