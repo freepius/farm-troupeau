@@ -125,12 +125,12 @@
                                             <td>{{ animal.yearLabel }}</td>
                                             <td>{{ animal.marquage }}</td>
                                             <td>{{ animal.boucle }}</td>
-                                            <td>{{ animal.displayName }}</td>
+                                            <td class="animal-name-cell">{{ animal.displayName }}</td>
                                             <td>{{ animal.themeLabel }}</td>
                                             <td>{{ animal.motherNameLabel ?: '—' }}</td>
                                             <td class="actions-cell">
                                                 {% if has_details %}
-                                                    <span class="row-info-icon" aria-hidden="true">i</span>
+                                                    <span class="row-info-icon" title="Infos complémentaires" aria-hidden="true">i</span>
                                                 {% else %}
                                                     <span class="subtle">—</span>
                                                 {% endif %}
