@@ -108,12 +108,18 @@
                                         <th>Thème</th>
                                         <th>Nom de la mère</th>
                                         <th>Mort</th>
-                                        <th>Caractéristiques</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for animal in animals %}
-                                        <tr>
+                                        <tr
+                                            class="animal-row"
+                                            tabindex="0"
+                                            aria-expanded="false"
+                                            aria-controls="animal-details-{{ loop.index }}"
+                                            data-row-detail-trigger
+                                        >
                                             <td>{{ animal.yearLabel }}</td>
                                             <td>{{ animal.marquage }}</td>
                                             <td>{{ animal.boucle }}</td>
@@ -128,7 +134,19 @@
                                                     <span class="status status-alive">Vivant</span>
                                                 {% endif %}
                                             </td>
-                                            <td>{{ animal.characteristicsLabel }}</td>
+                                            <td class="actions-cell">
+                                                <span class="row-info-icon" aria-hidden="true">i</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="animal-detail-row" id="animal-details-{{ loop.index }}" hidden>
+                                            <td colspan="8">
+                                                <div class="animal-detail">
+                                                    <section class="animal-detail__section">
+                                                        <span class="animal-detail__label">Caractéristiques</span>
+                                                        <p>{{ animal.characteristicsLabel ?: 'Aucun.' }}</p>
+                                                    </section>
+                                                </div>
+                                            </td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>
