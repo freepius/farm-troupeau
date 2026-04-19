@@ -258,41 +258,36 @@ td {
 // Fixed column widths keep the Actions column visible without horizontal scroll.
 th:nth-child(1),
 tbody tr.animal-row td:nth-child(1) {
-  width: 8%;
+  width: 9%;
 }
 
 th:nth-child(2),
 tbody tr.animal-row td:nth-child(2) {
-  width: 12%;
+  width: 14%;
 }
 
 th:nth-child(3),
 tbody tr.animal-row td:nth-child(3) {
-  width: 10%;
+  width: 12%;
 }
 
 th:nth-child(4),
 tbody tr.animal-row td:nth-child(4) {
-  width: 16%;
+  width: 20%;
 }
 
 th:nth-child(5),
 tbody tr.animal-row td:nth-child(5) {
-  width: 13%;
+  width: 17%;
 }
 
 th:nth-child(6),
 tbody tr.animal-row td:nth-child(6) {
-  width: 17%;
+  width: 20%;
 }
 
 th:nth-child(7),
 tbody tr.animal-row td:nth-child(7) {
-  width: 16%;
-}
-
-th:nth-child(8),
-tbody tr.animal-row td:nth-child(8) {
   width: 8%;
 }
 
@@ -301,18 +296,25 @@ tbody tr:hover {
 }
 
 // Clickable animal rows reveal the secondary detail row below them.
-tbody tr.animal-row {
+tbody tr.animal-row--has-details {
   cursor: pointer;
 }
 
-tbody tr.animal-row:focus-visible {
+tbody tr.animal-row--has-details:focus-visible {
   outline: 2px solid rgba(47, 107, 63, 0.32);
   outline-offset: -2px;
   background: $accent-soft;
 }
 
-tbody tr.animal-row[aria-expanded="true"] {
+tbody tr.animal-row--has-details[aria-expanded="true"] {
   background: rgba(230, 241, 217, 0.72);
+}
+
+tbody tr.animal-row--dead,
+tbody tr.animal-row--dead:hover,
+tbody tr.animal-row--dead:focus-visible,
+tbody tr.animal-row--dead[aria-expanded="true"] {
+  background: rgba(121, 45, 45, 0.12);
 }
 
 tbody tr.animal-detail-row:hover {
