@@ -1,43 +1,43 @@
 Année,N° marquage,N° boucle,Nom,Thème,Nom de la mère,Mort,Caractéristiques
 2019,139093,10001,Coco,Câlin,,,"Alpine, cloche"
-2019,139093,10002,Tima,Ancien patron,,04/05/2022,
-2020,241018,01081,Haricot,Légumineuse,,,Noir avec des taches
-2020,241018,01082,Trompette,Instrument de musique,,,"Beige avec des taches, grosse, grandes oreilles "
-2020,241018,01083,Astrid,Astrid Lindgren,,24/03/2021,
-2020,241018,01084,Pixel,Informatique,,13/02/2024,
-2020,241018,01085,Naseweis,Surnom pour les enfants,,,"Noir, nez blanc, corne cassé"
-2020,241018,01086,Syrah,Vin & cépage,,23/03/2022,
-2020,241018,01087,Maya,Peuple,,,Noir
-2020,241018,01088,Bretzel,Alsace,,28/07/2025,
-2020,241018,01089,Debian (Mignonne),Distributions GNU / Linux,,,"Rouge, mono mamelle"
-2020,241018,01090,Litchi,Fruit tropical,,,"Rouge, tache blanche, vieux tapis"
-2020,241018,01091,Zézètte,Nom en «ette»,,23/07/2025,
-2020,241018,01092,Galaxy,Espace & astronomie,,,"Noir, petite taches blanches sur le nez et les oreilles"
-2020,241018,01093,Madeleine,Col alpin du tour de France,,,"Rouge tacheté, corne alpine"
-2020,241018,01094,Lavande,Plante aromatique,,28/01/2024,
-2020,241018,01095,Amiga,Amitié internationale,,,"Rouge, pampilles, cloche"
-2020,241676,01001,Llardana,Montagne,,,Rouge tacheté
-2020,241676,01002,Australie,Australie,,,"Rouge, tache blanche sur le ventre"
-2020,241676,01003,Pettirossi,Oiseau,,11/07/2024,
-2020,241676,01004,Écorce,Forêt,,,"Rouge, nez blanc, grosse"
-2020,241676,01005,Garrigue,Paysage,,,"Rouge, taches blanches sur les oreilles, mamelles chaussettes"
-2020,241676,01006,Nzinga,Femme au destin extraordinaire,,,"Noir, petite taches blanches sur les oreilles"
-2020,242088,00015,Vanille,Épice,,08/11/2022,
-2020,242088,00016,Chocolat,Gourmandise,,,"Provençale, couleur chocolat"
-2021,139093,10003,Mathilde,Ancien patron,Tima,11/10/2025,
+2019,139093,10002,Tima,Ancien patron,,04/05/22,
+2020,241018,1081,Haricot,Légumineuse,,,Noir avec des taches
+2020,241018,1082,Trompette,Instrument de musique,,,"Beige avec des taches, grosse, grandes oreilles "
+2020,241018,1083,Astrid,Astrid Lindgren,,24/03/21,
+2020,241018,1084,Pixel,Informatique,,13/02/24,
+2020,241018,1085,Naseweis,Surnom pour les enfants,,,"Noir, nez blanc, corne cassé"
+2020,241018,1086,Syrah,Vin & cépage,,23/03/22,
+2020,241018,1087,Maya,Peuple,,,Noir
+2020,241018,1088,Bretzel,Alsace,,28/07/25,
+2020,241018,1089,Debian (Mignonne),Distributions GNU / Linux,,,"Rouge, mono mamelle"
+2020,241018,1090,Litchi,Fruit tropical,,,"Rouge, tache blanche, vieux tapis"
+2020,241018,1091,Zézètte,Nom en «ette»,,23/07/25,
+2020,241018,1092,Galaxy,Espace & astronomie,,,"Noir, petite taches blanches sur le nez et les oreilles"
+2020,241018,1093,Madeleine,Col alpin du tour de France,,,"Rouge tacheté, corne alpine"
+2020,241018,1094,Lavande,Plante aromatique,,28/01/24,
+2020,241018,1095,Amiga,Amitié internationale,,,"Rouge, pampilles, cloche"
+2020,241676,1001,Llardana,Montagne,,,Rouge tacheté
+2020,241676,1002,Australie,Australie,,,"Rouge, tache blanche sur le ventre"
+2020,241676,1003,Pettirossi,Oiseau,,11/07/24,
+2020,241676,1004,Écorce,Forêt,,,"Rouge, nez blanc, grosse"
+2020,241676,1005,Garrigue,Paysage,,,"Rouge, taches blanches sur les oreilles, mamelles chaussettes"
+2020,241676,1006,Nzinga,Femme au destin extraordinaire,,,"Noir, petite taches blanches sur les oreilles"
+2020,242088,15,Vanille,Épice,,08/11/22,
+2020,242088,16,Chocolat,Gourmandise,,,"Provençale, couleur chocolat"
+2021,139093,10003,Mathilde,Ancien patron,Tima,11/10/25,
 2021,139093,10005,Greta,Femme au destin extraordinaire,Nzinga,,"Rouge tacheté, corne cassé"
 2021,139093,10006,Signal de botrange,Montagne,Llardana,,Rouge
 2021,139093,10007,M’Goun,Montagne,Llardana,,"Rouge tacheté, grandes cornes horizontales"
 2021,139093,10008,Lentille,Légumineuse,Haricot,,Rouge tacheté
 2021,139093,10009,Aravis,Col alpin du tour de France,Madeleine,,"Rouge tacheté, grosse, grandes oreilles"
 2021,139093,10010,Orion,Espace & astronomie,Galaxy,,"Noir avec des taches, corne cassé"
-2021,139093,10011,Feuille,Forêt,Écorce,13/09/2024,
+2021,139093,10011,Feuille,Forêt,Écorce,13/09/24,
 2022,139093,10012,Knuffie,Câlin,Coco,,"Beige, cornes alpine"
-2022,139093,10013,Vriendinnetje,Amitié internationale,Amiga,05/09/2024,
-2022,139093,10014,Flûte,Instrument de musique,Trompette,14/12/2024,
+2022,139093,10013,Vriendinnetje,Amitié internationale,Amiga,05/09/24,
+2022,139093,10014,Flûte,Instrument de musique,Trompette,14/12/24,
 2022,139093,10015,Berbère,Peuple,Maya,,"Noir, tache sur le nez, cornes très verticales"
-2022,139093,10016,Louisette,Nom en «ette»,Zézètte,15/01/2026,
-2022,139093,10017,Henriette,Nom en «ette»,Zézètte,28/01/2024,
+2022,139093,10016,Louisette,Nom en «ette»,Zézètte,15/01/26,
+2022,139093,10017,Henriette,Nom en «ette»,Zézètte,28/01/24,
 2022,139093,10018,Mézenc,Montagne,Llardana,,"Rouge tacheté, petite"
 2022,139093,10019,Steppe,Paysage,Garrigue,,"Rouge, mono mamelle"
 2022,139093,10020,Malala,Femme au destin extraordinaire,Nzinga,,"Rouge, petites taches sur les oreilles"
@@ -47,9 +47,9 @@ Année,N° marquage,N° boucle,Nom,Thème,Nom de la mère,Mort,Caractéristiques
 2022,139093,10024,Sarriette,Plante aromatique,Lavande,,Rouge foncé
 2022,139093,10025,Boomerang,Australie,Australie,,"Noir, petit bout de corne cassé"
 2022,139093,10026,Muscadet,Vin & cépage,Syrah,,Rouge
-2022,139093,10027,Iseran,Col alpin du tour de France,Aravis,,Rouge tacheté
+2022,139093,10027,Iseran,Col alpin du tour de France,Aravis,03/09/26,Rouge tacheté
 2022,139093,10031,Caramel,Gourmandise,Chocolat,,"Couleur caramel, grosse"
-2023,139093,10034,Maasaï,Peuple,Maya,24/02/2026,
+2023,139093,10034,Maasaï,Peuple,Maya,24/02/26,
 2024,139093,10035,Mandoline,Instrument de musique,Trompette,,"Rouge claire, pas de mamelle"
 2024,242431,60006,Réglisse,Gourmandise,Chocolat,,"Boucabelle, cornes alpine"
 2024,242431,60007,Bozo,Peuple,Maya,,"Noir, petite"

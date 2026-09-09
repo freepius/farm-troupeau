@@ -1,0 +1,14 @@
+<nav class="view-nav" aria-label="Vues">
+    <a
+        href="{{ path('app_home', filters) }}"
+        class="view-nav__link{% if active_view == 'table' %} is-active{% endif %}"
+    >Tableau</a>
+    <a
+        href="{{ path('app_home_print', filters) }}"
+        class="view-nav__link{% if active_view == 'print' %} is-active{% endif %}"
+    >Imprimer</a>
+    <a
+        href="{{ path('app_families') }}"
+        class="view-nav__link{% if active_view == 'families' %} is-active{% endif %}"
+    >Familles</a>
+</nav>

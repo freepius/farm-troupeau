@@ -12,13 +12,61 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
+    private const CSV_PATH = 'data/animaux.csv';
+
+    /**
+     * Home view with interactive filters and the detailed table.
+     */
     #[Route('/', name: 'app_home')]
     public function index(Request $request, AnimalProvider $animalProvider, AnimalStatsBuilder $animalStatsBuilder): Response
     {
-        $csvPath = 'data/animaux.csv';
-        $animals = $animalProvider->all($csvPath);
+        $animals = $animalProvider->all(self::CSV_PATH);
         $sidebarStats = $animalStatsBuilder->build($animals);
+        $filters = $this->buildFilters($request);
+        $filteredAnimals = $this->filterAndSortAnimals($animals, $filters);
 
+        $yearOptions = $this->uniqueSortedYears($animals);
+        $themeOptions = $this->uniqueSortedThemes($animals);
+
+        $stats = [
+            'total' => count($animals),
+            'filtered' => count($filteredAnimals),
+            'alive' => count(array_filter($filteredAnimals, fn (AnimalRecord $animal): bool => $animal->isAlive())),
+            'dead' => count(array_filter($filteredAnimals, fn (AnimalRecord $animal): bool => !$animal->isAlive())),
+        ];
+
+        return $this->render('home/index.html.twig', [
+            'csv_path' => self::CSV_PATH,
+            'animals' => $filteredAnimals,
+            'filters' => $filters,
+            'year_options' => $yearOptions,
+            'theme_options' => $themeOptions,
+            'stats' => $stats,
+            'sidebar_stats' => $sidebarStats,
+        ]);
+    }
+
+    /**
+     * Printable page that reuses the exact same filters as the main view.
+     */
+    #[Route('/impression', name: 'app_home_print')]
+    public function print(Request $request, AnimalProvider $animalProvider): Response
+    {
+        $animals = $animalProvider->all(self::CSV_PATH);
+        $filters = $this->buildFilters($request);
+        $filteredAnimals = $this->filterAndSortAnimals($animals, $filters);
+
+        return $this->render('home/print.html.twig', [
+            'animals' => $filteredAnimals,
+            'filters' => $filters,
+        ]);
+    }
+
+    /**
+     * @return array{q:string,annee:string,theme:string,statut:string,tri:string}
+     */
+    private function buildFilters(Request $request): array
+    {
         $filters = [
             'q' => trim((string) $request->query->get('q', '')),
             'annee' => trim((string) $request->query->get('annee', '')),
@@ -45,9 +93,16 @@ final class HomeController extends AbstractController
             $filters['tri'] = 'annee_asc_nom_asc';
         }
 
-        $yearOptions = $this->uniqueSortedYears($animals);
-        $themeOptions = $this->uniqueSortedThemes($animals);
+        return $filters;
+    }
 
+    /**
+     * @param list<AnimalRecord> $animals
+     * @param array{q:string,annee:string,theme:string,statut:string,tri:string} $filters
+     * @return list<AnimalRecord>
+     */
+    private function filterAndSortAnimals(array $animals, array $filters): array
+    {
         $filteredAnimals = array_values(array_filter(
             $animals,
             fn (AnimalRecord $animal): bool => $this->matchesFilters($animal, $filters)
@@ -55,22 +110,7 @@ final class HomeController extends AbstractController
 
         usort($filteredAnimals, fn (AnimalRecord $a, AnimalRecord $b): int => $this->compareAnimals($a, $b, $filters['tri']));
 
-        $stats = [
-            'total' => count($animals),
-            'filtered' => count($filteredAnimals),
-            'alive' => count(array_filter($filteredAnimals, fn (AnimalRecord $animal): bool => $animal->isAlive())),
-            'dead' => count(array_filter($filteredAnimals, fn (AnimalRecord $animal): bool => !$animal->isAlive())),
-        ];
-
-        return $this->render('home/index.html.twig', [
-            'csv_path' => $csvPath,
-            'animals' => $filteredAnimals,
-            'filters' => $filters,
-            'year_options' => $yearOptions,
-            'theme_options' => $themeOptions,
-            'stats' => $stats,
-            'sidebar_stats' => $sidebarStats,
-        ]);
+        return $filteredAnimals;
     }
 
     /**

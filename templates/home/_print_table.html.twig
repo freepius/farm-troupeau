@@ -1,0 +1,32 @@
+<table class="print-table">
+    <thead>
+        <tr>
+            <th>Année</th>
+            <th>N° boucle</th>
+            <th>Nom</th>
+            <th>Thème</th>
+            <th>Caractéristique</th>
+            <th>Traite</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for animal in animals %}
+            <tr>
+                <td>{{ animal.yearLabel }}</td>
+                <td>{{ animal.boucle }}</td>
+                <td class="print-name-cell{% if animal.deathDateLabel %} print-name-cell--dead{% endif %}">
+                    {{ animal.displayName }}
+                </td>
+                <td>{{ animal.themeLabel ?: '—' }}</td>
+                <td>{{ animal.characteristicsLabel ?: '—' }}</td>
+                <td class="print-check-cell">
+                    <div class="print-check-grid" aria-hidden="true">
+                        {% for _ in 1..15 %}
+                            <span></span>
+                        {% endfor %}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

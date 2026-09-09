@@ -1,0 +1,64 @@
+<div class="table-wrap">
+    <table class="animal-table">
+        <thead>
+            <tr>
+                <th>Année</th>
+                <th>N° marquage</th>
+                <th>N° boucle</th>
+                <th>Nom</th>
+                <th>Thème</th>
+                <th>Nom de la mère</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for animal in animals %}
+                {% set has_details = animal.deathDateLabel or animal.characteristicsLabel %}
+                <tr
+                    class="animal-row{% if animal.deathDateLabel %} animal-row--dead{% endif %}{% if has_details %} animal-row--has-details{% endif %}"
+                    {% if has_details %}
+                        tabindex="0"
+                        aria-expanded="false"
+                        aria-controls="animal-details-{{ loop.index }}"
+                        data-row-detail-trigger
+                    {% endif %}
+                >
+                    <td>{{ animal.yearLabel }}</td>
+                    <td>{{ animal.marquage }}</td>
+                    <td>{{ animal.boucle }}</td>
+                    <td class="animal-name-cell">{{ animal.displayName }}</td>
+                    <td>{{ animal.themeLabel }}</td>
+                    <td>{{ animal.motherNameLabel ?: '—' }}</td>
+                    <td class="actions-cell">
+                        {% if has_details %}
+                            <span class="row-info-icon" title="Infos complémentaires" aria-hidden="true">i</span>
+                        {% else %}
+                            <span class="subtle">—</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% if has_details %}
+                    <tr class="animal-detail-row" id="animal-details-{{ loop.index }}" hidden>
+                        <td colspan="7">
+                            <div class="animal-detail">
+                                {% if animal.deathDateLabel %}
+                                    <section class="animal-detail__section">
+                                        <span class="animal-detail__label">Décès</span>
+                                        <p>Décédée le {{ animal.deathDateLabel }}.</p>
+                                    </section>
+                                {% endif %}
+
+                                {% if animal.characteristicsLabel %}
+                                    <section class="animal-detail__section">
+                                        <span class="animal-detail__label">Caractéristiques</span>
+                                        <p>{{ animal.characteristicsLabel }}</p>
+                                    </section>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

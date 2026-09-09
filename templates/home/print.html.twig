@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Impression{% endblock %}
+
+{% block body %}
+    <main class="page-shell page-shell--print">
+        <section class="print-page">
+            <header class="print-page__header no-print">
+                <div>
+                    <h1>Impression du tableau</h1>
+                    <p>Cette vue reprend les filtres actifs du tableau principal.</p>
+                </div>
+
+                <div class="print-page__actions">
+                    <a href="{{ path('app_home', filters) }}" class="print-page__link">Retour au tableau</a>
+                    <button type="button" class="print-page__button" data-print-page>Imprimer</button>
+                </div>
+            </header>
+
+            {% include 'home/_view_nav.html.twig' with { active_view: 'print', filters: filters } only %}
+
+            <section class="panel print-panel">
+                <div class="panel-head no-print">
+                    <h2>Tableau d'impression</h2>
+                    <div class="panel-meta">
+                        <span class="pill">{{ animals|length }} chèvres</span>
+                    </div>
+                </div>
+
+                <div class="print-sheet">
+                        {% include 'home/_print_table.html.twig' with { animals: animals } only %}
+                </div>
+            </section>
+        </section>
+    </main>
+{% endblock %}

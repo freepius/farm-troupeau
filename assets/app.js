@@ -15,11 +15,23 @@ const toggleAnimalDetail = (trigger) => {
     detailRow.hidden = isExpanded;
 };
 
+// The dedicated print page still relies on the browser print dialog.
+const printPage = () => {
+    window.print();
+};
+
 // Table animal rows are clickable so users do not have to target a tiny control.
 document.addEventListener('click', (event) => {
     const target = event.target;
 
     if (!(target instanceof HTMLElement)) {
+        return;
+    }
+
+    const printTrigger = target.closest('[data-print-page]');
+    if (printTrigger instanceof HTMLButtonElement) {
+        printPage();
+
         return;
     }
 
